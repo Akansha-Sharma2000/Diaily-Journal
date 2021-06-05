@@ -1,0 +1,25 @@
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+<p><%= startingContent %></p>  <!--This is the variable that we are gonna pass over-->
+<% console.log(posts); %>        <!--Scriptlet tag allows us to write js inside our ejs file.-->
+
+   <% posts.forEach(function(post){ %>          <!--This uses an Array.prototype.foeEach() method(can google in net).The name of the parameter 
+                                            inside the function will be singular form of our array name.It is simpler way of looping an
+                                            array without using for loop.This says that for the array posts it will console log the title for
+                                            each post. -->
+    <h1><%= post.title %></h1>          <!--If we don't use this tag(i.e, <%=   %>) then our webpage will end up showing a normal text (i.e,
+                                            post.title) instead of the value.-->
+    <p>
+       <%= post.content.substring(0,100) + "..." %>
+       <a href="/posts/<%= post.title %>">Read More</a>
+   </p>                                                    <!--In order to truncate a string or a paragraph to some specified number of words the we
+                                                          use substring method and inside the parenthesis we put from which letter we want to start
+                                                         and till which letter we need eo end.-->
+   <% }) %>
+
+<%- include("partials/footer") -%>
+
+
+
+<!--route parametes-->
